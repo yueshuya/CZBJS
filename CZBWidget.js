@@ -7,8 +7,18 @@ function inherit(p) {
 	var t = typeof p;
 	if (t !== "object" && t !== "function") 
 		throw TypeError();
-	
+
 	function f(){}
 	f.prototype = p;
 	return new f();
+}
+
+
+// 为 target 扩展属性或方法
+// obj 目前只支持对象，以后可以扩展到属性、函数等
+function extend(target, obj) {
+	// 应该先判断 target 和 obj 的类型，以及非空判断
+	for(p in obj) {
+		target[p] = obj[p]
+	}
 }
